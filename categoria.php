@@ -14,7 +14,7 @@
 			margin: 0.3em;
 			background-color:#3366ff;
 		}
-	</style>
+		</style>
 	</head>
     
     <body>
