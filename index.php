@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 	
 	<head>
@@ -53,7 +53,7 @@
 	</main>
 	
 	<footer>
-		FOOTER
+		PIE DE PAGINA
 	</footer>
 	
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
