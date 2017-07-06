@@ -1,4 +1,4 @@
-DROP DATABASE IF EXITS TiendaWeb;
+DROP DATABASE TiendaWeb;
 CREATE DATABASE TiendaWeb;
 USE TiendaWeb;
 
