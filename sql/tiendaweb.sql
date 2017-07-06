@@ -10,6 +10,8 @@ CREATE TABLE Cliente(
 	direccion VARCHAR(512)
 );
 
+
+
 CREATE TABLE Producto(
 	id INT PRIMARY KEY,
 	nombre VARCHAR(100),
