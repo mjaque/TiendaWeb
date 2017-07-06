@@ -40,12 +40,21 @@
 	
 	<aside style="float:left; width:22%; margin-top: 0px;">
 		<h2>Categorías</h2>
-		<ul>
-			<li><a href="categoria.php">Frutas Mediterráneas</a></li>
-			<li><a href="categoria.php">Frutas Tropicales</a></li>
-			<li><a href="categoria.php">Frutos Secos</a></li>
-			<li><a href="categoria.php">Frutas Escarchadas</a></li>		
-		</ul>
+		<?php
+			$mysqli = new mysqli('localhost', 'TiendaWeb', 'TiendaWeb', 'TiendaWeb');
+			if ($mysqli->connect_error)
+				die('Error de Conexión (' . $mysqli->connect_errno . ') '. $mysqli->connect_error);
+			
+			if (($resultSet = $mysqli->query("SELECT nombre FROM Categoria WHERE idPadre IS NULL")) === 0)
+				die('Error de Query (' . $mysqli->errno . ') '. $mysqli->error);
+			
+			echo '<ul>';
+			while(($row = $resultSet->fetch_assoc()) != NULL){
+				echo '<li><a href="categoria.php">'.utf8_encode($row['nombre']).'</a></li>';
+				echo "\n";
+			}
+			echo '</ul>';
+		?>
 	</aside>
 		
 	<main style="margin-left: 24%; width:75%; min-height:200px">
