@@ -1,23 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
-	
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		
-		<style>
-		header, nav, main, aside, footer{
-			border:1px solid black;
-			margin: 0.3em;
-			background-color:#3366ff;
-		}
-		</style>
-	</head>
-    
-    <body>
+<?php
+require_once('inc/cabecera.php');
+
+?>
 	<header>
 		<p>TiendaWeb - tu tienda de webs</p>
 	</header>
@@ -40,12 +24,11 @@
 	
 	<aside style="float:left; width:22%; margin-top: 0px;">
 		<h2>Categorías</h2>
-		<ul>
-			<li><a href="categoria.php">Frutas Mediterráneas</a></li>
-			<li><a href="categoria.php">Frutas Tropicales</a></li>
-			<li><a href="categoria.php">Frutos Secos</a></li>
-			<li><a href="categoria.php">Frutas Escarchadas</a></li>		
-		</ul>
+		<?php
+			require_once('inc/bd.php');
+			$bd = new BD();
+			echo $bd->verListaCategorias();
+		?>
 	</aside>
 		
 	<main style="margin-left: 24%; width:75%; min-height:200px">
