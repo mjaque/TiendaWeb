@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-07-2017 a las 13:27:27
+-- Tiempo de generación: 12-07-2017 a las 13:06:50
 -- Versión del servidor: 5.7.18-0ubuntu0.16.04.1
 -- Versión de PHP: 7.0.18-0ubuntu0.16.04.1
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `TiendaWeb`
 --
-CREATE DATABASE IF NOT EXISTS `TiendaWeb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `TiendaWeb`;
 
 -- --------------------------------------------------------
 
@@ -42,7 +40,9 @@ INSERT INTO `Categoria` (`id`, `nombre`, `idPadre`) VALUES
 (1, 'Mediterránea', NULL),
 (2, 'Tropical', NULL),
 (3, 'Secos', NULL),
-(4, 'Escarchadas', NULL);
+(4, 'Escarchadas', NULL),
+(5, 'Magrebí', 1),
+(6, 'Francesa', 1);
 
 -- --------------------------------------------------------
 
@@ -54,6 +54,16 @@ CREATE TABLE `Categoria_Producto` (
   `idCategoria` int(11) NOT NULL,
   `idProducto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `Categoria_Producto`
+--
+
+INSERT INTO `Categoria_Producto` (`idCategoria`, `idProducto`) VALUES
+(1, 1),
+(1, 2),
+(3, 3),
+(3, 4);
 
 -- --------------------------------------------------------
 
@@ -109,6 +119,16 @@ CREATE TABLE `Producto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Volcado de datos para la tabla `Producto`
+--
+
+INSERT INTO `Producto` (`id`, `nombre`, `descripcion`, `precio`, `imagen`) VALUES
+(1, 'Sandía', 'Roja y redonda', '1.35', NULL),
+(2, 'Melón', 'Amelonado y verde', '2.46', NULL),
+(3, 'Almedras', 'Amargas', '2.56', NULL),
+(4, 'Nueces', 'De Macadamia', '4.89', NULL);
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -161,7 +181,7 @@ ALTER TABLE `Producto`
 -- AUTO_INCREMENT de la tabla `Categoria`
 --
 ALTER TABLE `Categoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `Cliente`
 --
@@ -181,7 +201,7 @@ ALTER TABLE `Pedido`
 -- AUTO_INCREMENT de la tabla `Producto`
 --
 ALTER TABLE `Producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Restricciones para tablas volcadas
 --
