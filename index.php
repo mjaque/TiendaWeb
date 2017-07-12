@@ -1,26 +1,13 @@
 ﻿<?php
-require_once('inc/cabecera.php');
-
+    require_once('inc/cabecera.php');
 ?>
 	<header>
 		<p>TiendaWeb - tu tienda de webs</p>
 	</header>
-							
-	<nav style="margin-top: 1.1em">
-		<div class="row">
-			<div class="col-md-8">
-				NAV - Buscador y carrito
-			</div>
-			<div class="col-md-4">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Search for...">
-					<span class="input-group-btn">
-						<button class="btn btn-default" type="button">Go!</button>
-					</span>
-				</div><!-- /input-group -->
-			</div>
-		</div>
-	</nav>
+
+<?php
+    require_once('inc/nav.php');
+?>
 	
 	<aside style="float:left; width:22%; margin-top: 0px;">
 		<h2>Categorías</h2>
@@ -34,14 +21,7 @@ require_once('inc/cabecera.php');
 	<main style="margin-left: 24%; width:75%; min-height:200px">
 		MAIN (tabla de productos destacados)
 	</main>
-	
-	<footer>
-		PIE DE PAGINA
-	</footer>
-	
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	
-   </body>
-</html>
+
+<?php
+    require_once('inc/pie.php');
+?>
