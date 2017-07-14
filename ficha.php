@@ -14,10 +14,10 @@
 ?>
 		
 	<main style="margin-left: 24%; width:75%; min-height:200px">
-		<h1>Plátanos</h1>
-			<img src="img/platanos.jpg" alt="fruta1" style="width:250px"/>
-			<p>Plátanos:  2.4 €/kilo</p>
-			<p>Plátanos de Canarias, muy ricos y sabrosos. Sin arañas.</p>
+		<?php 
+			$bd = new BD();
+			echo $bd->verFichaProducto(filter_input( INPUT_GET, 'id', FILTER_SANITIZE_ENCODED ));
+		?>
 	</main>
 
 <?php

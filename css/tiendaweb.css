@@ -3,3 +3,8 @@ header, nav, main, aside, footer{
 	margin: 0.3em;
 	background-color:lightgreen;
 }
+
+#tablaProductos{
+	border-spacing: 2em;
+	border-collapse: separate;
+}

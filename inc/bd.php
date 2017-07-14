@@ -12,7 +12,7 @@ class BD{
 	
 	function verListaCategorias(){
 		$html = '<ul>';
-		if (($resultSet = $this->conexion->query("SELECT nombre, id FROM Categoria WHERE idPadre IS NULL")) === 0)
+		if (($resultSet = $this->conexion->query("SELECT nombre, id FROM categoria WHERE idPadre IS NULL")) === 0)
 			die('Error de Query (' . $this->conexion->errno . ') '. $this->conexion->error);
 			
 		while(($row = $resultSet->fetch_assoc()) != NULL){
@@ -38,19 +38,20 @@ class BD{
 
     function verTablaProductos( $idCategoria )
     {
-        $html = '<table>';
+        $html = '<table id="tablaProductos">';
         if ( ($resultSet = $this->conexion->query
-            ( "SELECT nombre, precio, imagen
+            ( "SELECT id, nombre, precio, imagen
                 FROM producto INNER JOIN categoria_producto
                 ON producto.id = categoria_producto.idProducto
                 WHERE categoria_producto.idCategoria = $idCategoria" ) ) === 0
         )
             die('Error de Query (' . $this->conexion->errno . ') '. $this->conexion->error);
 
-        $row = 1;
+        $contador = 0;
         while(($row = $resultSet->fetch_assoc()) != NULL)
         {
-                $html .= '<tr>';
+		if ($contador % 3 == 0)
+			$html .= '<tr>';
                 $html .= '<td>';
                 $html .= '<img src="' . utf8_encode($row['imagen'])
                             . '" alt="'
@@ -60,15 +61,32 @@ class BD{
                             . ": "
                             . utf8_encode( $row['precio'] )
                             . ' €/kilo</p>';
-                $html .= '<p><a href="ficha.php">Ver detalles</a></p>';
+                $html .= '<p><a href="ficha.php?id='.$row['id'].'">Ver detalles</a></p>';
                 $html .= '</td>';
-                $html .= '</tr>';
+                if ($contador % 3 == 2)
+			$html .= '</tr>';
+                $contador++;
         }
-        $html .= '<table>';
+        $html .= '</table>';
 
         return $html;
     }
+
+    function verFichaProducto($idProducto){
+	if ( ($resultSet = $this->conexion->query
+		( "SELECT nombre, descripcion, precio, imagen
+                FROM producto WHERE id = $idProducto" ) ) === 0
+        )
+		die('Error de Query (' . $this->conexion->errno . ') '. $this->conexion->error);
+
+	if(($row = $resultSet->fetch_assoc()) == NULL)
+		die('Error de Query (' . $this->conexion->errno . ') '. $this->conexion->error);
+		
+	$html = '<h1>'.$row['nombre'].'</h1>';
+	$html .= '<img src="'.$row['imagen'].'" alt="'.$row['nombre'].'" style="width:250px"/>';
+	$html .= '<p>'.$row['nombre'].': '.$row['precio'].' &euro;/kilo</p>';
+	$html .= '<p>'.$row['descripcion'].'</p>';
+	
+	return utf8_encode($html);
+    }
 }
-	
-			
-	
