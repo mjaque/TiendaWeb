@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 12-07-2017 a las 13:06:50
--- Versión del servidor: 5.7.18-0ubuntu0.16.04.1
--- Versión de PHP: 7.0.18-0ubuntu0.16.04.1
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 14-07-2017 a las 10:56:38
+-- Versión del servidor: 5.7.14
+-- Versión de PHP: 5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,61 +17,61 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `TiendaWeb`
+-- Base de datos: `tiendaweb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Categoria`
+-- Estructura de tabla para la tabla `categoria`
 --
 
-CREATE TABLE `Categoria` (
+CREATE TABLE `categoria` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(100) DEFAULT NULL,
+  `nombre` varchar(100) CHARACTER SET utf8 COLLATE utf8_spanish_ci DEFAULT NULL,
   `idPadre` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `Categoria`
+-- Volcado de datos para la tabla `categoria`
 --
 
-INSERT INTO `Categoria` (`id`, `nombre`, `idPadre`) VALUES
-(1, 'Mediterránea', NULL),
-(2, 'Tropical', NULL),
-(3, 'Secos', NULL),
-(4, 'Escarchadas', NULL),
-(5, 'Magrebí', 1),
-(6, 'Francesa', 1);
+INSERT INTO `categoria` (`id`, `nombre`, `idPadre`) VALUES
+  (1, 'Mediterránea', NULL),
+  (2, 'Tropical', NULL),
+  (3, 'Secos', NULL),
+  (4, 'Escarchadas', NULL),
+  (5, 'Magrebí', 1),
+  (6, 'Francesa', 1);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Categoria_Producto`
+-- Estructura de tabla para la tabla `categoria_producto`
 --
 
-CREATE TABLE `Categoria_Producto` (
+CREATE TABLE `categoria_producto` (
   `idCategoria` int(11) NOT NULL,
   `idProducto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `Categoria_Producto`
+-- Volcado de datos para la tabla `categoria_producto`
 --
 
-INSERT INTO `Categoria_Producto` (`idCategoria`, `idProducto`) VALUES
-(1, 1),
-(1, 2),
-(3, 3),
-(3, 4);
+INSERT INTO `categoria_producto` (`idCategoria`, `idProducto`) VALUES
+  (1, 1),
+  (1, 2),
+  (3, 3),
+  (3, 4);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Cliente`
+-- Estructura de tabla para la tabla `cliente`
 --
 
-CREATE TABLE `Cliente` (
+CREATE TABLE `cliente` (
   `id` int(11) NOT NULL,
   `usuario` varchar(100) DEFAULT NULL,
   `clave` varchar(100) DEFAULT NULL,
@@ -82,10 +82,10 @@ CREATE TABLE `Cliente` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `LineaPedido`
+-- Estructura de tabla para la tabla `lineapedido`
 --
 
-CREATE TABLE `LineaPedido` (
+CREATE TABLE `lineapedido` (
   `id` int(11) NOT NULL,
   `cantidad` int(11) DEFAULT NULL,
   `idPedido` int(11) DEFAULT NULL,
@@ -95,10 +95,10 @@ CREATE TABLE `LineaPedido` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Pedido`
+-- Estructura de tabla para la tabla `pedido`
 --
 
-CREATE TABLE `Pedido` (
+CREATE TABLE `pedido` (
   `id` int(11) NOT NULL,
   `fecha` date DEFAULT NULL,
   `idCliente` int(11) DEFAULT NULL
@@ -107,10 +107,10 @@ CREATE TABLE `Pedido` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Producto`
+-- Estructura de tabla para la tabla `producto`
 --
 
-CREATE TABLE `Producto` (
+CREATE TABLE `producto` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) DEFAULT NULL,
   `descripcion` varchar(512) DEFAULT NULL,
@@ -119,58 +119,58 @@ CREATE TABLE `Producto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `Producto`
+-- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `Producto` (`id`, `nombre`, `descripcion`, `precio`, `imagen`) VALUES
-(1, 'Sandía', 'Roja y redonda', '1.35', NULL),
-(2, 'Melón', 'Amelonado y verde', '2.46', NULL),
-(3, 'Almedras', 'Amargas', '2.56', NULL),
-(4, 'Nueces', 'De Macadamia', '4.89', NULL);
+INSERT INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `imagen`) VALUES
+  (1, 'Sandía', 'Roja y redonda', '1.35', 'img/sandia.jpg'),
+  (2, 'Melón', 'Amelonado y verde', '2.46', 'img/melon.jpg'),
+  (3, 'Almedras', 'Amargas', '2.56', 'img/almendras.jpg'),
+  (4, 'Nueces', 'De Macadamia', '4.89', 'img/nueces.jpg');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `Categoria`
+-- Indices de la tabla `categoria`
 --
-ALTER TABLE `Categoria`
+ALTER TABLE `categoria`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idPadre` (`idPadre`);
 
 --
--- Indices de la tabla `Categoria_Producto`
+-- Indices de la tabla `categoria_producto`
 --
-ALTER TABLE `Categoria_Producto`
+ALTER TABLE `categoria_producto`
   ADD PRIMARY KEY (`idCategoria`,`idProducto`),
   ADD KEY `idProducto` (`idProducto`);
 
 --
--- Indices de la tabla `Cliente`
+-- Indices de la tabla `cliente`
 --
-ALTER TABLE `Cliente`
+ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `LineaPedido`
+-- Indices de la tabla `lineapedido`
 --
-ALTER TABLE `LineaPedido`
+ALTER TABLE `lineapedido`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idPedido` (`idPedido`),
   ADD KEY `idProducto` (`idProducto`);
 
 --
--- Indices de la tabla `Pedido`
+-- Indices de la tabla `pedido`
 --
-ALTER TABLE `Pedido`
+ALTER TABLE `pedido`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idCliente` (`idCliente`);
 
 --
--- Indices de la tabla `Producto`
+-- Indices de la tabla `producto`
 --
-ALTER TABLE `Producto`
+ALTER TABLE `producto`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -178,59 +178,59 @@ ALTER TABLE `Producto`
 --
 
 --
--- AUTO_INCREMENT de la tabla `Categoria`
+-- AUTO_INCREMENT de la tabla `categoria`
 --
-ALTER TABLE `Categoria`
+ALTER TABLE `categoria`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
--- AUTO_INCREMENT de la tabla `Cliente`
+-- AUTO_INCREMENT de la tabla `cliente`
 --
-ALTER TABLE `Cliente`
+ALTER TABLE `cliente`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `LineaPedido`
+-- AUTO_INCREMENT de la tabla `lineapedido`
 --
-ALTER TABLE `LineaPedido`
+ALTER TABLE `lineapedido`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `Pedido`
+-- AUTO_INCREMENT de la tabla `pedido`
 --
-ALTER TABLE `Pedido`
+ALTER TABLE `pedido`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `Producto`
+-- AUTO_INCREMENT de la tabla `producto`
 --
-ALTER TABLE `Producto`
+ALTER TABLE `producto`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `Categoria`
+-- Filtros para la tabla `categoria`
 --
-ALTER TABLE `Categoria`
-  ADD CONSTRAINT `Categoria_ibfk_1` FOREIGN KEY (`idPadre`) REFERENCES `Categoria` (`id`);
+ALTER TABLE `categoria`
+  ADD CONSTRAINT `Categoria_ibfk_1` FOREIGN KEY (`idPadre`) REFERENCES `categoria` (`id`);
 
 --
--- Filtros para la tabla `Categoria_Producto`
+-- Filtros para la tabla `categoria_producto`
 --
-ALTER TABLE `Categoria_Producto`
-  ADD CONSTRAINT `Categoria_Producto_ibfk_1` FOREIGN KEY (`idCategoria`) REFERENCES `Categoria` (`id`),
-  ADD CONSTRAINT `Categoria_Producto_ibfk_2` FOREIGN KEY (`idProducto`) REFERENCES `Producto` (`id`);
+ALTER TABLE `categoria_producto`
+  ADD CONSTRAINT `Categoria_Producto_ibfk_1` FOREIGN KEY (`idCategoria`) REFERENCES `categoria` (`id`),
+  ADD CONSTRAINT `Categoria_Producto_ibfk_2` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`id`);
 
 --
--- Filtros para la tabla `LineaPedido`
+-- Filtros para la tabla `lineapedido`
 --
-ALTER TABLE `LineaPedido`
-  ADD CONSTRAINT `LineaPedido_ibfk_1` FOREIGN KEY (`idPedido`) REFERENCES `Pedido` (`id`),
-  ADD CONSTRAINT `LineaPedido_ibfk_2` FOREIGN KEY (`idProducto`) REFERENCES `Producto` (`id`);
+ALTER TABLE `lineapedido`
+  ADD CONSTRAINT `LineaPedido_ibfk_1` FOREIGN KEY (`idPedido`) REFERENCES `pedido` (`id`),
+  ADD CONSTRAINT `LineaPedido_ibfk_2` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`id`);
 
 --
--- Filtros para la tabla `Pedido`
+-- Filtros para la tabla `pedido`
 --
-ALTER TABLE `Pedido`
-  ADD CONSTRAINT `Pedido_ibfk_1` FOREIGN KEY (`idCliente`) REFERENCES `Cliente` (`id`);
+ALTER TABLE `pedido`
+  ADD CONSTRAINT `Pedido_ibfk_1` FOREIGN KEY (`idCliente`) REFERENCES `cliente` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

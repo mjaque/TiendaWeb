@@ -8,16 +8,10 @@
 <?php
     require_once('inc/nav.php');
 ?>
-	
-	<aside style="float:left; width:22%; margin-top: 0px;">
-		<h2>Categorías</h2>
-		<ul>
-			<li><a href="categoria.php">Frutas Mediterráneas</a></li>
-			<li><a href="categoria.php">Frutas Tropicales</a></li>
-			<li><a href="categoria.php">Frutos Secos</a></li>
-			<li><a href="categoria.php">Frutas Escarchadas</a></li>		
-		</ul>
-	</aside>
+
+<?php
+    require_once('inc/aside.php');
+?>
 		
 	<main style="margin-left: 24%; width:75%; min-height:200px">
 		<h1>Plátanos</h1>
