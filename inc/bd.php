@@ -24,7 +24,7 @@ class BD{
 		return $html;
 	}
 
-    function verTituloCategoria( $idCategoria )
+	function verTituloCategoria( $idCategoria )
     {
         if( ($resultSet = $this->conexion->query( "SELECT nombre FROM categoria WHERE id = $idCategoria" ) ) === 0 )
             die('Error de Query (' . $this->conexion->errno . ') '. $this->conexion->error);
