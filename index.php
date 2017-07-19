@@ -17,7 +17,7 @@
 	//2. Iniciamos la sesión del usuario
 	session_start();
 	
-	//3. index.php?clase=Home&metodo=verProductos
+	//3. index.php?clase=Home&metodo=verProductos...
 	if (isset($_REQUEST['clase'])){
 		require_once('ui/'.$_REQUEST['clase'].'.php');	//Solo permitimos cargar clases de iu desde index.php
 		$clase = "Class".$_REQUEST['clase'];
