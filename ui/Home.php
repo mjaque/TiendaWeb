@@ -5,10 +5,13 @@ class Home extends Pagina{
 	function mostrar(){
 		$doc = parent::getPlantilla();
 
-		$listaCategorias = TiendaWeb::verListaCategorias();
-		print_r($listaCategorias);
+		$this->verCategorias($doc);
 		
-		//echo $doc->saveHTML();
+		//TODO: Mostrar los productos Destacados
+		
+		echo $doc->saveHTML();
 	}
+	
+	
 	
 }

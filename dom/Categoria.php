@@ -13,8 +13,21 @@ class Categoria{
 		$this->idPadre = $idPadre;
 		$this->categoriaPadre = null;
 	}
+	
+	function __construct($id){
+		$categoria = DAOCategoria::cargar($id);
+		$this = $categoria;
+	}
 
 	static function verLista(){
 		return DAOCategoria::verLista();
+	}
+	
+	public function getNombre(){
+		return $this->nombre;
+	}
+
+	public function getId(){
+		return $this->id;
 	}
 }

@@ -20,12 +20,9 @@
 	//3. index.php?clase=Home&metodo=verProductos...
 	if (isset($_REQUEST['clase'])){
 		require_once('ui/'.$_REQUEST['clase'].'.php');	//Solo permitimos cargar clases de iu desde index.php
-		$clase = "Class".$_REQUEST['clase'];
-		//$objeto = new Home();
-		//$objeto = new 'Class.Home'();
-		$objeto = new $clase();
+		$objeto = new $_REQUEST['clase']();
 		if (isset($_REQUEST['metodo'])){
-			$objeto->$_REQUEST['metodo']();
+			$objeto->{$_REQUEST['metodo']}();
 		}
 	}
 	else{
