@@ -1,5 +1,7 @@
 <?php
 
+namespace TiendaWeb\DOM;
+
 class Categoria{
 
 	private $id;
@@ -14,13 +16,17 @@ class Categoria{
 		$this->categoriaPadre = null;
 	}
 	
-	function __construct($id){
-		$categoria = DAOCategoria::cargar($id);
-		$this = $categoria;
+	static function crearPorId($id){
+		$categoria = \TiendaWeb\DAO\Categoria::cargar($id);
+		return $categoria;
 	}
 
 	static function verLista(){
-		return DAOCategoria::verLista();
+		return  \TiendaWeb\DAO\Categoria::verLista();
+	}
+	
+	function verProductos(){
+		return  \TiendaWeb\DAO\Producto::verProductosPorCategoria($this);
 	}
 	
 	public function getNombre(){

@@ -1,5 +1,7 @@
 <?php
 
+namespace TiendaWeb\UI;
+
 class Home extends Pagina{
 
 	function mostrar(){

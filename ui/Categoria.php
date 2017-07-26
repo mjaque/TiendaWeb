@@ -1,6 +1,8 @@
 <?php
 
-class UICategoria extends Pagina{
+namespace TiendaWeb\UI;
+
+class Categoria extends Pagina{
 
 	function mostrar(){
 		$doc = parent::getPlantilla();
@@ -8,8 +10,7 @@ class UICategoria extends Pagina{
 		$this->verCategorias($doc);
 		
 		//Mostrar en Main los productos de la categoría
-		$categoria = new Categoria($_REQUEST['id']);
-		$listaProductos = $categoria->verProductos();
+		$listaProductos = \TiendaWeb\APP\TiendaWeb::verProductosPorIdCategoria($_REQUEST['id']);
 		
 		//Añadimos los productos al main
 		
